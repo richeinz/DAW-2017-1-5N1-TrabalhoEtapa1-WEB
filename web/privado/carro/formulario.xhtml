@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo">Corretora de Seguro</ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:growl/>
+                <p:panelGrid columns="2">
+                    <f:facet name="footer">
+                        <div align="center">
+                            <p:commandButton value="Cancelar"
+                                             action="#{controleCarro.cancelar()}"
+                                             ajax="false" immediate="true"/>
+                            <p:commandButton value="Salvar"
+                                             action="#{controleCarro.salvar()}"
+                                             ajax="false"/>
+                        </div>
+                    </f:facet>
+                    <p:outputLabel value="ID"/>
+                    <p:inputText value="#{controleCarro.objeto.id}" size="10"/>
+                    
+                    <p:outputLabel value="PLACA" for="txPlaca"/>
+                    <p:inputText value="#{controleCarro.objeto.placa}"
+                                 id="txtPlaca" size="40" maxlength="40"
+                                 placeholder="Obrigatório"/>
+                    
+                    <p:outputLabel value="RENAVAN" for="txRenavan"/>
+                    <p:inputText value="#{controleCarro.objeto.renavan}"
+                                 id="txtRenavan" size="40" maxlength="40"
+                                 placeholder="Obrigatório"/>
+                    
+                    <p:outputLabel value="MODELO" for="txModelo"/>
+                    <p:inputText value="#{controleCarro.objeto.modelo}"
+                                 id="txtModelo" size="40" maxlength="40"
+                                 placeholder="Obrigatório"/>
+                    
+                    <p:outputLabel value="FABRICANTE" for="txFabricante"/>
+                    <p:inputText value="#{controleCarro.objeto.fabricante}"
+                                 id="txtFabricante" size="40" maxlength="40"
+                                 placeholder="Obrigatório"/>
+                    
+                    <p:outputLabel value="ANO FABRICAÇÃO" for="txAnoFab"/>
+                    <p:inputText value="#{controleCarro.objeto.anoFabricacao}"
+                                 id="txtAnoFab" size="40" maxlength="40"
+                                 placeholder="Obrigatório"/>
+                    
+                    <p:outputLabel value="ANO MODELO" for="txAnoMod"/>
+                    <p:inputText value="#{controleCarro.objeto.anoModelo}"
+                                 id="txtAnoMod" size="40" maxlength="40"
+                                 placeholder="Obrigatório"/>
+                    
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
