@@ -6,7 +6,7 @@
 package br.edu.ifsul.dao;
 
 import br.edu.ifsul.jpa.EntityManagerUtil;
-import br.edu.ifsul.modelo.Carro;
+import br.edu.ifsul.modelo.Cobertura;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
 import java.util.List;
@@ -16,20 +16,20 @@ import javax.persistence.EntityManager;
  *
  * @author Ricardo
  */
-public class CarroDAO implements Serializable{
+public class CoberturaDAO implements Serializable{
     
     private String mensagem = "";
     private EntityManager em;
     
-    public CarroDAO(){
+    public CoberturaDAO(){
         em = EntityManagerUtil.getEntityManager();
     }
     
-    public List<Carro> getLista(){
-        return em.createQuery("from Carro order by ano_fabricacao").getResultList();
+    public List<Cobertura> getLista(){
+        return em.createQuery("from Cobertura order by id").getResultList();
     }
     
-    public boolean salvar(Carro obj){
+    public boolean salvar(Cobertura obj){
         try{
             em.getTransaction().begin();
             if(obj.getId() == null){
@@ -50,7 +50,7 @@ public class CarroDAO implements Serializable{
         }
     }
     
-    public boolean remover(Carro obj){
+    public boolean remover(Cobertura obj){
         try{
             em.getTransaction().begin();
             em.remove(obj);
@@ -67,8 +67,8 @@ public class CarroDAO implements Serializable{
         }
     }
     
-    public Carro localizar(Integer id){
-        return em.find(Carro.class, id);
+    public Cobertura localizar(Integer id){
+        return em.find(Cobertura.class, id);
     }
 
     public String getMensagem() {
@@ -88,3 +88,4 @@ public class CarroDAO implements Serializable{
     }
     
 }
+

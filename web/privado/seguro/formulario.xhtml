@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo">Corretora de Seguro</ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:growl/>
+                <p:panelGrid columns="2">
+                    <f:facet name="footer">
+                        <div align="center">
+                            <p:commandButton value="Cancelar"
+                                             action="#{controleSeguro.cancelar()}"
+                                             ajax="false" immediate="true"/>
+                            <p:commandButton value="Salvar"
+                                             action="#{controleSeguro.salvar()}"
+                                             ajax="false"/>
+                        </div>
+                    </f:facet>
+                    <p:outputLabel value="ID"/>
+                    <p:inputText value="#{controleSeguro.objeto.id}" size="10"/>
+
+                    <p:outputLabel value="DATA" for="txtData"/>
+                    <p:calendar 
+                        id="txtData"
+                        value="#{controleSeguro.objeto.data}"                               
+                        pattern="dd/MM/yyyy"
+                        locale="pt_BR" size="12" mask="true">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:calendar>
+                    
+                    <p:outputLabel value="INÍCIO VIGÊNCIA" for="txtInicioVigencia"/>
+                    <p:calendar  
+                        id="txtInicioVigencia"
+                        value="#{controleSeguro.objeto.inicioVigencia}"                               
+                        pattern="dd/MM/yyyy"
+                        locale="pt_BR" size="12" mask="true">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:calendar>
+                    
+                    <p:outputLabel value="FIM VIGÊNCIA" for="txtFimVigencia"/>
+                    <p:calendar 
+                        id="txtFimVigencia"
+                        value="#{controleSeguro.objeto.fimVigencia}"                               
+                        pattern="dd/MM/yyyy"
+                        locale="pt_BR" size="12" mask="true">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:calendar>
+
+                    <p:outputLabel value="VALOR FIPE" for="txtValorFipe"/>
+                    <p:inputText value="#{controleSeguro.objeto.valorFipe}"
+                                 id="txtValorFipe" size="40" maxlength="40"
+                                 placeholder="Obrigatório"/>
+                    
+                    <p:outputLabel value="VALOR TOTAL" for="txtValorTotal"/>
+                    <p:inputText value="#{controleSeguro.objeto.valorTotal}"
+                                 id="txtValorTotal" size="40" maxlength="40"
+                                 placeholder="Obrigatório"/>
+
+                    <p:outputLabel value="CARRO" for="selectCarro"/>
+                    <p:selectOneMenu value="#{controleSeguro.objeto.carro}"
+                                     id="selectCarro">
+                        <f:converter converterId="converterCarro"/>
+                        <selectItem noSelectionOption="true"
+                                    itemLabel="Selecione um registro"/>
+                        <f:selectItems value="#{controleSeguro.daoCarro.lista}"
+                                       var="car" itemLabel="#{car.modelo}"/>
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel value="CORRETOR" for="selectCorretor"/>
+                    <p:selectOneMenu value="#{controleSeguro.objeto.corretor}"
+                                     id="selectCorretor">
+                        <f:converter converterId="converterCorretor"/>
+                        <selectItem noSelectionOption="true"
+                                    itemLabel="Selecione um registro"/>
+                        <f:selectItems value="#{controleSeguro.daoCorretor.lista}"
+                                       var="cor" itemLabel="#{cor.nome}"/>
+                    </p:selectOneMenu>
+                    
+                    
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

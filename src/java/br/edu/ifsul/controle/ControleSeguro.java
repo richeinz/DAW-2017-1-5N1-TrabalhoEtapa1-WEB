@@ -5,9 +5,10 @@
  */
 package br.edu.ifsul.controle;
 
-import br.edu.ifsul.dao.PessoaDAO;
 import br.edu.ifsul.dao.CarroDAO;
-import br.edu.ifsul.modelo.Carro;
+import br.edu.ifsul.dao.CorretorDAO;
+import br.edu.ifsul.dao.SeguroDAO;
+import br.edu.ifsul.modelo.Seguro;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -17,26 +18,28 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Ricardo
  */
-@ManagedBean(name = "controleCarro")
+@ManagedBean(name = "controleSeguro")
 @SessionScoped
-public class ControleCarro implements Serializable{
+public class ControleSeguro implements Serializable{
     
-    private CarroDAO dao;
-    private Carro objeto;
-    private PessoaDAO daoPessoa;
+    private SeguroDAO dao;
+    private Seguro objeto;
+    private CorretorDAO daoCorretor;
+    private CarroDAO daoCarro;
     
     
-     public ControleCarro(){
-        dao = new CarroDAO();
-        daoPessoa = new PessoaDAO();
+     public ControleSeguro(){
+        dao = new SeguroDAO();
+        daoCorretor = new CorretorDAO();
+        daoCarro = new CarroDAO();
     }
     
     public String listar(){
-        return"/privado/carro/listar?faces-redirect=true";
+        return"/privado/seguro/listar?faces-redirect=true";
     }
     
     public String novo(){
-        objeto = new Carro();
+        objeto = new Seguro();
         return "formulario";
     }
     
@@ -74,29 +77,39 @@ public class ControleCarro implements Serializable{
     }
     
 
-    public CarroDAO getDao() {
+    public SeguroDAO getDao() {
         return dao;
     }
 
-    public void setDao(CarroDAO dao) {
+    public void setDao(SeguroDAO dao) {
         this.dao = dao;
     }
 
-    public Carro getObjeto() {
+    public Seguro getObjeto() {
         return objeto;
     }
 
-    public void setObjeto(Carro objeto) {
+    public void setObjeto(Seguro objeto) {
         this.objeto = objeto;
     }
 
-    public PessoaDAO getDaoPessoa() {
-        return daoPessoa;
+    public CorretorDAO getDaoCorretor() {
+        return daoCorretor;
     }
 
-    public void setDaoPessoa(PessoaDAO daoPessoa) {
-        this.daoPessoa = daoPessoa;
+    public void setDaoCorretor(CorretorDAO daoCorretor) {
+        this.daoCorretor = daoCorretor;
     }
+
+    public CarroDAO getDaoCarro() {
+        return daoCarro;
+    }
+
+    public void setDaoCarro(CarroDAO daoCarro) {
+        this.daoCarro = daoCarro;
+    }
+
+    
     
     
     

@@ -24,35 +24,47 @@
                     <p:outputLabel value="ID"/>
                     <p:inputText value="#{controleCarro.objeto.id}" size="10"/>
                     
-                    <p:outputLabel value="PLACA" for="txPlaca"/>
+                    <p:outputLabel value="PLACA" for="txtPlaca"/>
                     <p:inputText value="#{controleCarro.objeto.placa}"
-                                 id="txtPlaca" size="40" maxlength="40"
+                                 id="txtPlaca" size="40" maxlength="7"
                                  placeholder="Obrigatório"/>
                     
-                    <p:outputLabel value="RENAVAN" for="txRenavan"/>
-                    <p:inputText value="#{controleCarro.objeto.renavan}"
+                    <p:outputLabel value="RENAVAN" for="txtRenavan"/>
+                    <p:inputText value="#{controleCarro.objeto.renavam}"
                                  id="txtRenavan" size="40" maxlength="40"
                                  placeholder="Obrigatório"/>
                     
-                    <p:outputLabel value="MODELO" for="txModelo"/>
+                    <p:outputLabel value="MODELO" for="txtModelo"/>
                     <p:inputText value="#{controleCarro.objeto.modelo}"
                                  id="txtModelo" size="40" maxlength="40"
                                  placeholder="Obrigatório"/>
                     
-                    <p:outputLabel value="FABRICANTE" for="txFabricante"/>
+                    <p:outputLabel value="FABRICANTE" for="txtFabricante"/>
                     <p:inputText value="#{controleCarro.objeto.fabricante}"
                                  id="txtFabricante" size="40" maxlength="40"
                                  placeholder="Obrigatório"/>
                     
-                    <p:outputLabel value="ANO FABRICAÇÃO" for="txAnoFab"/>
+                    <p:outputLabel value="ANO FABRICAÇÃO" for="txtAnoFab"/>
                     <p:inputText value="#{controleCarro.objeto.anoFabricacao}"
                                  id="txtAnoFab" size="40" maxlength="40"
                                  placeholder="Obrigatório"/>
                     
-                    <p:outputLabel value="ANO MODELO" for="txAnoMod"/>
+                    <p:outputLabel value="ANO MODELO" for="txtAnoMod"/>
                     <p:inputText value="#{controleCarro.objeto.anoModelo}"
                                  id="txtAnoMod" size="40" maxlength="40"
                                  placeholder="Obrigatório"/>
+                    
+                    <p:outputLabel value="PESSOA" for="selectPessoa"/>
+                    <p:selectOneMenu value="#{controleCarro.objeto.pessoa}"
+                                     id="selectPessoa">
+                        <f:converter converterId="converterPessoa"/>
+                        <selectItem noSelectionOption="true"
+                                    itemLabel="Selecione um registro"/>
+                        <f:selectItems value="#{controleCarro.daoPessoa.lista}"
+                                       var="pes" itemLabel="#{pes.nome}"/>
+                    </p:selectOneMenu>
+                    
+                    
                     
                 </p:panelGrid>
             </h:form>

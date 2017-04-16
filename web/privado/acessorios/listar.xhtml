@@ -11,46 +11,28 @@
                 <p:growl/>
                 <p:messages/>
                 <p:commandButton value="Novo"
-                                 action="#{controleCarro.novo()}"
+                                 action="#{controleAcessorios.novo()}"
                                  ajax="false"
                                  icon="ui-icon-plus"/>
-                <p:dataTable value="#{controleCarro.dao.lista}"
+                <p:dataTable value="#{controleAcessorios.dao.lista}"
                              var="obj">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{obj.id}"/>
                     </p:column>
-                    <p:column headerText="PLACA">
-                        <p:outputLabel value="#{obj.placa}"/>
-                    </p:column>
-                    <p:column headerText="RENAVAN">
-                        <p:outputLabel value="#{obj.renavam}"/>
-                    </p:column>
-                    <p:column headerText="MODELO">
-                        <p:outputLabel value="#{obj.modelo}"/>
-                    </p:column>
-                    <p:column headerText="FABRICANTE">
-                        <p:outputLabel value="#{obj.fabricante}"/>
-                    </p:column>
-                    <p:column headerText="ANO FABRICAÇÃO">
-                        <p:outputLabel value="#{obj.anoFabricacao}"/>
-                    </p:column>
-                    <p:column headerText="ANO MODELO">
-                        <p:outputLabel value="#{obj.anoModelo}"/>
-                    </p:column>
-                    <p:column headerText="PESSOA">
-                        <p:outputLabel value="#{obj.pessoa.nome}"/>
+                    <p:column headerText="DESCRIÇÃO">
+                        <p:outputLabel value="#{obj.descricao}"/>
                     </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
-                            <p:commandButton action="#{controleCarro.editar(obj.id)}"
+                            <p:commandButton action="#{controleAcessorios.editar(obj.id)}"
                                              icon="ui-icon-pencil"
                                              ajax="false"
                                              title="Editar"/>
-                            <p:commandButton action="#{controleCarro.remover(obj.id)}"
+                            <p:commandButton action="#{controleAcessorios.remover(obj.id)}"
                                              icon="ui-icon-trash"
                                              ajax="false" title="Excluir"
                                              onclick="if (!confirm('Confirma a exclusão?'))
-                                                     return false"/>
+                                                         return false"/>
                         </div>
                     </p:column>
                 </p:dataTable>

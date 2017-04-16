@@ -5,16 +5,16 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="/templates/template.xhtml">
-        <ui:define name="titulo">Sistema com JSF 2 e Primefaces da turma 5N!</ui:define>
+        <ui:define name="titulo">Corretora de Seguro</ui:define>
         <ui:define name="conteudo">
             <h:form>
                 <p:growl/>
                 <p:messages/>
                 <p:commandButton value="Novo"
-                                 action="#{controleMarca.novo()}"
+                                 action="#{controleCorretor.novo()}"
                                  ajax="false"
                                  icon="ui-icon-plus"/>
-                <p:dataTable value="#{controleMarca.dao.lista}"
+                <p:dataTable value="#{controleCorretor.dao.lista}"
                              var="obj">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{obj.id}"/>
@@ -22,13 +22,31 @@
                     <p:column headerText="NOME">
                         <p:outputLabel value="#{obj.nome}"/>
                     </p:column>
+                    <p:column headerText="CPF">
+                        <p:outputLabel value="#{obj.cpf}"/>
+                    </p:column>
+                    <p:column headerText="EMAIL">
+                        <p:outputLabel value="#{obj.email}"/>
+                    </p:column>
+                    <p:column headerText="RG">
+                        <p:outputLabel value="#{obj.rg}"/>
+                    </p:column>
+                    <p:column headerText="TELEFONE">
+                        <p:outputLabel value="#{obj.telefone}"/>
+                    </p:column>
+                    <p:column headerText="USUÁRIO">
+                        <p:outputLabel value="#{obj.nomeUsuario}"/>
+                    </p:column>
+                    <p:column headerText="PERCENTUAL COMISSÃO">
+                        <p:outputLabel value="#{obj.percentualComissao}"/>
+                    </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
-                            <p:commandButton action="#{controleMarca.editar(obj.id)}"
+                            <p:commandButton action="#{controleCorretor.editar(obj.id)}"
                                              icon="ui-icon-pencil"
                                              ajax="false"
                                              title="Editar"/>
-                            <p:commandButton action="#{controleMarca.remover(obj.id)}"
+                            <p:commandButton action="#{controleCorretor.remover(obj.id)}"
                                              icon="ui-icon-trash"
                                              ajax="false" title="Excluir"
                                              onclick="if (!confirm('Confirma a exclusão?'))

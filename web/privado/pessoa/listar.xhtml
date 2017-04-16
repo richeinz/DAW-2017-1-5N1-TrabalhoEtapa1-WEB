@@ -11,10 +11,10 @@
                 <p:growl/>
                 <p:messages/>
                 <p:commandButton value="Novo"
-                                 action="#{controleEstado.novo()}"
+                                 action="#{controlePessoa.novo()}"
                                  ajax="false"
                                  icon="ui-icon-plus"/>
-                <p:dataTable value="#{controleEstado.dao.lista}"
+                <p:dataTable value="#{controlePessoa.dao.lista}"
                              var="obj">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{obj.id}"/>
@@ -22,16 +22,25 @@
                     <p:column headerText="NOME">
                         <p:outputLabel value="#{obj.nome}"/>
                     </p:column>
-                    <p:column headerText="UF">
-                        <p:outputLabel value="#{obj.uf}"/>
+                    <p:column headerText="CPF">
+                        <p:outputLabel value="#{obj.cpf}"/>
+                    </p:column>
+                    <p:column headerText="EMAIL">
+                        <p:outputLabel value="#{obj.email}"/>
+                    </p:column>
+                    <p:column headerText="RG">
+                        <p:outputLabel value="#{obj.rg}"/>
+                    </p:column>
+                    <p:column headerText="TELEFONE">
+                        <p:outputLabel value="#{obj.telefone}"/>
                     </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
-                            <p:commandButton action="#{controleEstado.editar(obj.id)}"
+                            <p:commandButton action="#{controlePessoa.editar(obj.id)}"
                                              icon="ui-icon-pencil"
                                              ajax="false"
                                              title="Editar"/>
-                            <p:commandButton action="#{controleEstado.remover(obj.id)}"
+                            <p:commandButton action="#{controlePessoa.remover(obj.id)}"
                                              icon="ui-icon-trash"
                                              ajax="false" title="Excluir"
                                              onclick="if (!confirm('Confirma a exclusão?'))

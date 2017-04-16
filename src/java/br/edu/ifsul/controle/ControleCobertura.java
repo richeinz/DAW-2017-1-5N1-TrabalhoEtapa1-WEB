@@ -5,9 +5,9 @@
  */
 package br.edu.ifsul.controle;
 
-import br.edu.ifsul.dao.PessoaDAO;
-import br.edu.ifsul.dao.CarroDAO;
-import br.edu.ifsul.modelo.Carro;
+import br.edu.ifsul.dao.SeguroDAO;
+import br.edu.ifsul.dao.CoberturaDAO;
+import br.edu.ifsul.modelo.Cobertura;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -17,26 +17,26 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Ricardo
  */
-@ManagedBean(name = "controleCarro")
+@ManagedBean(name = "controleCobertura")
 @SessionScoped
-public class ControleCarro implements Serializable{
+public class ControleCobertura implements Serializable{
     
-    private CarroDAO dao;
-    private Carro objeto;
-    private PessoaDAO daoPessoa;
+    private CoberturaDAO dao;
+    private Cobertura objeto;
+    private SeguroDAO daoSeguro;
     
     
-     public ControleCarro(){
-        dao = new CarroDAO();
-        daoPessoa = new PessoaDAO();
-    }
+     public ControleCobertura(){
+        dao = new CoberturaDAO();
+        daoSeguro = new SeguroDAO();
+     }
     
     public String listar(){
-        return"/privado/carro/listar?faces-redirect=true";
+        return"/privado/cobertura/listar?faces-redirect=true";
     }
     
     public String novo(){
-        objeto = new Carro();
+        objeto = new Cobertura();
         return "formulario";
     }
     
@@ -74,29 +74,32 @@ public class ControleCarro implements Serializable{
     }
     
 
-    public CarroDAO getDao() {
+    public CoberturaDAO getDao() {
         return dao;
     }
 
-    public void setDao(CarroDAO dao) {
+    public void setDao(CoberturaDAO dao) {
         this.dao = dao;
     }
 
-    public Carro getObjeto() {
+    public Cobertura getObjeto() {
         return objeto;
     }
 
-    public void setObjeto(Carro objeto) {
+    public void setObjeto(Cobertura objeto) {
         this.objeto = objeto;
     }
 
-    public PessoaDAO getDaoPessoa() {
-        return daoPessoa;
+
+    public SeguroDAO getDaoSeguro() {
+        return daoSeguro;
     }
 
-    public void setDaoPessoa(PessoaDAO daoPessoa) {
-        this.daoPessoa = daoPessoa;
+    public void setDaoSeguro(SeguroDAO daoSeguro) {
+        this.daoSeguro = daoSeguro;
     }
+
+    
     
     
     

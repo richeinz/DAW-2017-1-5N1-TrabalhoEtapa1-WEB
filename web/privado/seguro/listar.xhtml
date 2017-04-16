@@ -3,54 +3,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="/templates/template.xhtml">
-        <ui:define name="titulo">Corretora de Seguro</ui:define>
+        <ui:define name="titulo">Sistema com JSF 2 e Primefaces da turma 5N!</ui:define>
         <ui:define name="conteudo">
             <h:form>
                 <p:growl/>
                 <p:messages/>
                 <p:commandButton value="Novo"
-                                 action="#{controleCarro.novo()}"
+                                 action="#{controleSeguro.novo()}"
                                  ajax="false"
                                  icon="ui-icon-plus"/>
-                <p:dataTable value="#{controleCarro.dao.lista}"
+                <p:dataTable value="#{controleSeguro.dao.lista}"
                              var="obj">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{obj.id}"/>
                     </p:column>
-                    <p:column headerText="PLACA">
-                        <p:outputLabel value="#{obj.placa}"/>
+                    <p:column headerText="DATA">
+                        <p:outputLabel value="#{obj.data.time}"><f:convertDateTime pattern="dd/MM/yyyy"/></p:outputLabel>
                     </p:column>
-                    <p:column headerText="RENAVAN">
-                        <p:outputLabel value="#{obj.renavam}"/>
+                    <p:column headerText="INICIO VIGÊNCIA">
+                        <p:outputLabel value="#{obj.inicioVigencia.time}"><f:convertDateTime pattern="dd/MM/yyyy"/></p:outputLabel>
                     </p:column>
-                    <p:column headerText="MODELO">
-                        <p:outputLabel value="#{obj.modelo}"/>
+                    <p:column headerText="FIM VIGÊNCIA">
+                        <p:outputLabel value="#{obj.fimVigencia.time}"><f:convertDateTime pattern="dd/MM/yyyy"/></p:outputLabel>
                     </p:column>
-                    <p:column headerText="FABRICANTE">
-                        <p:outputLabel value="#{obj.fabricante}"/>
+                    <p:column headerText="VALOR FIPE">
+                        <p:outputLabel value="#{obj.valorFipe}"/>
                     </p:column>
-                    <p:column headerText="ANO FABRICAÇÃO">
-                        <p:outputLabel value="#{obj.anoFabricacao}"/>
+                    <p:column headerText="VALOR TOTAL">
+                        <p:outputLabel value="#{obj.valorTotal}"/>
                     </p:column>
-                    <p:column headerText="ANO MODELO">
-                        <p:outputLabel value="#{obj.anoModelo}"/>
+                    <p:column headerText="CARRO">
+                        <p:outputLabel value="#{obj.carro.modelo}"/>
                     </p:column>
-                    <p:column headerText="PESSOA">
-                        <p:outputLabel value="#{obj.pessoa.nome}"/>
+                    <p:column headerText="CORRETOR">
+                        <p:outputLabel value="#{obj.corretor.nome}"/>
                     </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
-                            <p:commandButton action="#{controleCarro.editar(obj.id)}"
+                            <p:commandButton action="#{controleSeguro.editar(obj.id)}"
                                              icon="ui-icon-pencil"
                                              ajax="false"
                                              title="Editar"/>
-                            <p:commandButton action="#{controleCarro.remover(obj.id)}"
+                            <p:commandButton action="#{controleSeguro.remover(obj.id)}"
                                              icon="ui-icon-trash"
                                              ajax="false" title="Excluir"
                                              onclick="if (!confirm('Confirma a exclusão?'))
-                                                     return false"/>
+                                                         return false"/>
                         </div>
                     </p:column>
                 </p:dataTable>

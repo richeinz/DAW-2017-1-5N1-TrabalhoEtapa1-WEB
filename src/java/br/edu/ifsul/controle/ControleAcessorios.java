@@ -5,9 +5,8 @@
  */
 package br.edu.ifsul.controle;
 
-import br.edu.ifsul.dao.PessoaDAO;
-import br.edu.ifsul.dao.CarroDAO;
-import br.edu.ifsul.modelo.Carro;
+import br.edu.ifsul.dao.AcessoriosDAO;
+import br.edu.ifsul.modelo.Acessorios;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -17,26 +16,24 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Ricardo
  */
-@ManagedBean(name = "controleCarro")
+@ManagedBean(name = "controleAcessorios")
 @SessionScoped
-public class ControleCarro implements Serializable{
+public class ControleAcessorios implements Serializable{
     
-    private CarroDAO dao;
-    private Carro objeto;
-    private PessoaDAO daoPessoa;
+    private AcessoriosDAO dao;
+    private Acessorios objeto;
     
     
-     public ControleCarro(){
-        dao = new CarroDAO();
-        daoPessoa = new PessoaDAO();
+     public ControleAcessorios(){
+        dao = new AcessoriosDAO();
     }
     
     public String listar(){
-        return"/privado/carro/listar?faces-redirect=true";
+        return"/privado/acessorios/listar?faces-redirect=true";
     }
     
     public String novo(){
-        objeto = new Carro();
+        objeto = new Acessorios();
         return "formulario";
     }
     
@@ -74,30 +71,21 @@ public class ControleCarro implements Serializable{
     }
     
 
-    public CarroDAO getDao() {
+    public AcessoriosDAO getDao() {
         return dao;
     }
 
-    public void setDao(CarroDAO dao) {
+    public void setDao(AcessoriosDAO dao) {
         this.dao = dao;
     }
 
-    public Carro getObjeto() {
+    public Acessorios getObjeto() {
         return objeto;
     }
 
-    public void setObjeto(Carro objeto) {
+    public void setObjeto(Acessorios objeto) {
         this.objeto = objeto;
-    }
-
-    public PessoaDAO getDaoPessoa() {
-        return daoPessoa;
-    }
-
-    public void setDaoPessoa(PessoaDAO daoPessoa) {
-        this.daoPessoa = daoPessoa;
-    }
-    
+    } 
     
     
 }
